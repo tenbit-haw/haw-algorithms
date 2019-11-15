@@ -25,6 +25,9 @@ public class Problem0001 {
      */
     private static class Solution2 {
 
+        /**
+         * 利用hash对内循环进行优化
+         */
         public int[] twoSum(int[] nums, int target) {
             Map<Integer, Integer> map = new HashMap<>(nums.length);
             for (int idx = 0; idx < nums.length; idx++) {
@@ -47,6 +50,9 @@ public class Problem0001 {
      */
     private static class Solution1 {
 
+        /**
+         * 双重循环，暴力法
+         */
         public int[] twoSum(int[] nums, int target) {
             int len = nums.length;
             for (int i = 0; i < len; i++) {

@@ -30,6 +30,9 @@ public class Problem0002 {
      */
     private static class Solution1 {
 
+        /**
+         * 常规链表操作
+         */
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
             ListNode lc = new ListNode(0);
             ListNode lp = lc;

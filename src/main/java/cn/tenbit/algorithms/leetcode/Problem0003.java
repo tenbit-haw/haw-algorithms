@@ -48,12 +48,16 @@ public class Problem0003 {
      */
     private static class Solution1 {
 
+        /**
+         * 滑动窗口
+         */
         public int lengthOfLongestSubstring(String s) {
             char[] chs = s.toCharArray();
             int len = chs.length;
             int max = 0;
             for (int srt = 0; srt < len; srt++) {
-                // 通用做法(支持Unicode)使用Set
+                // 通用做法(支持Unicode)使用Set，但是JavaAPI本身Set实现会显著降低耗时
+                // 假设字符都是ASCII，使用table代替能显著降低耗时(400ms->6ms)
                 boolean[] tab = new boolean[128];
                 int tmx = 0;
                 for (int end = srt; end < len; end++) {
