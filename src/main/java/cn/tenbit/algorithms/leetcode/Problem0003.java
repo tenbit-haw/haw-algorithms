@@ -34,6 +34,9 @@ public class Problem0003 {
                 if (tmx > max) {
                     max = tmx;
                 }
+                if (max == len) {
+                    break;
+                }
             }
             return max;
         }
