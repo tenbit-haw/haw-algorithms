@@ -21,6 +21,9 @@ public class Problem0004 {
      */
     private static class Solution1 {
 
+        /**
+         * 对两个数组进行伪重组，找出中位数即可
+         */
         public double findMedianSortedArrays(int[] nums1, int[] nums2) {
             int len1 = nums1.length;
             int len2 = nums2.length;
