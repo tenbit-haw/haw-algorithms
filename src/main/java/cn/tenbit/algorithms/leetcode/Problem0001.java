@@ -2,6 +2,7 @@ package cn.tenbit.algorithms.leetcode;
 
 import cn.tenbit.haw.core.util.HawConsoles;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,8 +18,40 @@ public class Problem0001 {
         int[] res1 = new Solution1().twoSum(new int[]{2, 7, 11, 15}, 9);
         HawConsoles.jsout(res1);
 
-        int[] res = new Solution2().twoSum(new int[]{2, 7, 11, 15}, 9);
-        HawConsoles.jsout(res);
+        int[] res2 = new Solution2().twoSum(new int[]{2, 7, 11, 15}, 9);
+        HawConsoles.jsout(res2);
+
+        int[] res3 = new Solution3().twoSum(new int[]{2, 7, 11, 15}, 9);
+        HawConsoles.jsout(res3);
+    }
+
+    /**
+     * 执行用时：1ms,在所有java提交中击败了99.94%的用户
+     * 内存消耗：36.6MB,在所有java提交中击败了94.42%的用户
+     */
+    private static class Solution3 {
+
+        /**
+         * 手动实现hash变体，不使用JAVA API
+         */
+        public int[] twoSum(int[] nums, int target) {
+            // 假设nums最多2048个数字
+            int box = 2048;
+            int box_1 = box - 1;
+            int[] map = new int[box];
+            Arrays.fill(map, -1);
+            int len = nums.length;
+            for (int idx = 0; idx < len; idx++) {
+                int num = nums[idx];
+                int jdx = map[(target - num) & box_1];
+                if (jdx == -1) {
+                    map[num & box_1] = idx;
+                    continue;
+                }
+                return new int[]{jdx, idx};
+            }
+            return null;
+        }
     }
 
     /**
