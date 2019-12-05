@@ -14,22 +14,53 @@ import cn.tenbit.haw.core.util.HawConsoles;
 public class Problem0011 {
 
     public static void main(String[] args) {
-        int area = new Solution1().maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7});
-        HawConsoles.jsout(area);
+        int[] arr = {1, 8, 6, 2, 5, 4, 8, 3, 7};
 
+        int area1 = new Solution1().maxArea(arr);
+        HawConsoles.jsout(area1);
 
+        int area2 = new Solution2().maxArea(arr);
+        HawConsoles.jsout(area2);
     }
 
     /**
-     *
+     * 执行用时：2ms,在所有java提交中击败了99.87%的用户
+     * 内存消耗：39.4MB,在所有java提交中击败了93.66%的用户
      */
     private static class Solution2 {
 
         /**
          * 双指针法
+         * <p>
+         * 将矩形底部由最大开始递减，两竖边向内收拢，这样能迅速找出最佳值
+         * <p>
+         * 有类似贪心思想
          */
         public int maxArea(int[] arr) {
-            return 0;
+            int len = arr.length;
+            int max = 0;
+            int ldx = 0;
+            int rdx = len - 1;
+            int lft = 0;
+            int rgt = 0;
+            while (ldx < rdx) {
+                int hl = arr[ldx];
+                int hr = arr[rdx];
+                int now = (hl < hr ? hl : hr) * (rdx - ldx);
+                if (now > max) {
+                    max = now;
+                    lft = hl;
+                    rgt = hr;
+                }
+                // 每次保留高的边
+                if (hl > hr) {
+                    rdx--;
+                } else {
+                    ldx++;
+                }
+            }
+            // HawConsoles.jsout(lft, rgt);
+            return max;
         }
     }
 
