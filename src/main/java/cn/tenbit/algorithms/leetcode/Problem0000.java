@@ -11,7 +11,13 @@ public class Problem0000 {
     }
 
 
+    /**
+     *
+     */
     private static class Solution1 {
 
+        /**
+         *
+         */
     }
 }
