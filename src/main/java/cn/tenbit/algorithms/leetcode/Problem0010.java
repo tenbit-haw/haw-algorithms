@@ -4,6 +4,10 @@ import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
  * 正则表达式匹配
+ * <p>
+ * 字符串
+ * 动态规划
+ * 回溯算法
  *
  * @author bangquan.qian
  * @date 2019-11-14 19:16

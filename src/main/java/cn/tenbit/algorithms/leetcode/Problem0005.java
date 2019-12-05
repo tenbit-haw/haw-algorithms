@@ -4,6 +4,9 @@ import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
  * 最长回文子串
+ * <p>
+ * 字符串
+ * 动态规划
  *
  * @author bangquan.qian
  * @date 2019-11-14 19:16

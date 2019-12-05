@@ -4,6 +4,8 @@ import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
  * 两数相加
+ * <p>
+ * 链表，数字
  *
  * @author bangquan.qian
  * @date 2019-11-13 21:04

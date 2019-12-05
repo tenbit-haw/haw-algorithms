@@ -8,6 +8,8 @@ import java.util.Map;
 
 /**
  * 两数之和
+ * <p>
+ * 数组，hash表
  *
  * @author bangquan.qian
  * @date 2019-11-13 19:43

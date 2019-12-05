@@ -4,6 +4,10 @@ import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
  * 寻找两个有序数组的中位数
+ * <p>
+ * 数组
+ * 二分查找
+ * 分治算法
  *
  * @author bangquan.qian
  * @date 2019-11-14 19:16

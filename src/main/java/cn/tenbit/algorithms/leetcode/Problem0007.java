@@ -4,6 +4,8 @@ import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
  * 整数反转
+ * <p>
+ * 数学
  *
  * @author bangquan.qian
  * @date 2019-11-14 19:16

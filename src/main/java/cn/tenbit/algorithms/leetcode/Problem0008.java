@@ -4,6 +4,9 @@ import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
  * 字符串转换整数 (atoi)
+ * <p>
+ * 数学
+ * 字符串
  *
  * @author bangquan.qian
  * @date 2019-11-14 19:16
