@@ -3,8 +3,9 @@ package cn.tenbit.algorithms.leetcode;
 import cn.tenbit.haw.core.util.HawConsoles;
 
 /**
- * 最长公共前缀
+ * 罗马数字转整数
  * <p>
+ * 数学
  * 字符串
  *
  * @author bangquan.qian
@@ -13,69 +14,116 @@ import cn.tenbit.haw.core.util.HawConsoles;
 public class Problem0013 {
 
     public static void main(String[] args) {
+        String str = "MCMXCIV";
 
-        //String[] strs = {"flower", "flow", "flight"};
-        //String[] strs = {"dog", "racecar", "car"};
-        String[] strs = {"dogd", "dogdo", "dog"};
-
-        String longestCommonPrefix = new Solution1().longestCommonPrefix(strs);
-        HawConsoles.jsout(longestCommonPrefix);
-
+        int roman = new Solution1().romanToInt(str);
+        HawConsoles.jsout(roman);
     }
 
     /**
-     * 执行用时：1ms,在所有java提交中击败了89.87%的用户
-     * 内存消耗：37.5MB,在所有java提交中击败了75.64%的用户
+     * 执行用时：6ms,在所有java提交中击败了82.94%的用户
+     * 内存消耗：35.9MB,在所有java提交中击败了99.56%的用户
      */
     private static class Solution1 {
-
-        private static final String EMPTY = "";
 
         /**
          *
          */
-        public String longestCommonPrefix(String[] strs) {
-            int length = strs.length;
-            if (length < 1) {
-                return EMPTY;
+        public int romanToInt(String s) {
+            char[] chs = s.toCharArray();
+            int len = chs.length;
+            int res = 0;
+            for (int idx = 0; idx < len; idx++) {
+                char ch1 = chs[idx];
+                char ch2 = idx + 1 < len ? chs[idx + 1] : 0;
+                boolean spe = ch2 != 0 && tag(ch1) < tag(ch2);
+                if (spe) {
+                    res += spe(ch1, ch2);
+                    idx++;
+                } else {
+                    res += cv(ch1);
+                }
             }
-            char[][] chs = new char[length][];
-            int minidx = 0;
-            int minlen = strs[0].length();
-            for (int idx = 0; idx < length; idx++) {
-                String str = strs[idx];
-                int len = str.length();
-                if (len < 1) {
-                    return EMPTY;
+            return res;
+        }
+
+        private int spe(char ch1, char ch2) {
+            if (ch1 == 'I') {
+                if (ch2 == 'V') {
+                    return 4;
+                } else if (ch2 == 'X') {
+                    return 9;
                 }
-                if (minlen > len) {
-                    minlen = len;
-                    minidx = idx;
+            } else if (ch1 == 'X') {
+                if (ch2 == 'L') {
+                    return 40;
+                } else if (ch2 == 'C') {
+                    return 90;
                 }
-                chs[idx] = str.toCharArray();
+            } else if (ch1 == 'C') {
+                if (ch2 == 'D') {
+                    return 400;
+                } else if (ch2 == 'M') {
+                    return 900;
+                }
             }
-            char[] res = new char[minlen];
-            char[] tgt = chs[minidx];
-            int rdx = 0;
-            for (; rdx < minlen; rdx++) {
-                char tmp = tgt[rdx];
-                boolean flg = true;
-                for (int jdx = 0; jdx < length; jdx++) {
-                    if (jdx == minidx) {
-                        continue;
-                    }
-                    char cmp = chs[jdx][rdx];
-                    if (cmp != tmp) {
-                        flg = false;
-                        break;
-                    }
-                }
-                if (!flg) {
+            return 0;
+        }
+
+        private int cv(char ch) {
+            int cv = 0;
+            switch (ch) {
+                case 'M':
+                    cv = 1000;
                     break;
-                }
-                res[rdx] = tmp;
+                case 'D':
+                    cv = 500;
+                    break;
+                case 'C':
+                    cv = 100;
+                    break;
+                case 'L':
+                    cv = 50;
+                    break;
+                case 'X':
+                    cv = 10;
+                    break;
+                case 'V':
+                    cv = 5;
+                    break;
+                case 'I':
+                    cv = 1;
+                    break;
             }
-            return String.valueOf(res, 0, rdx);
+            return cv;
+        }
+
+        private int tag(char ch) {
+            int cv = 0;
+            switch (ch) {
+                case 'M':
+                    cv = 7;
+                    break;
+                case 'D':
+                    cv = 6;
+                    break;
+                case 'C':
+                    cv = 5;
+                    break;
+                case 'L':
+                    cv = 4;
+                    break;
+                case 'X':
+                    cv = 3;
+                    break;
+                case 'V':
+                    cv = 2;
+                    break;
+                case 'I':
+                    cv = 1;
+                    break;
+            }
+            return cv;
         }
     }
 }
