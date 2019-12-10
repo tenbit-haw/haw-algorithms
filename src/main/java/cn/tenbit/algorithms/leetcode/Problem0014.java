@@ -32,7 +32,7 @@ public class Problem0014 {
         private static final String EMPTY = "";
 
         /**
-         *
+         * 循环比对即可
          */
         public String longestCommonPrefix(String[] strs) {
             int length = strs.length;
