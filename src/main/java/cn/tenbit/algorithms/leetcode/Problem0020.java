@@ -23,6 +23,75 @@ public class Problem0020 {
                 return null;
             }
         });
+        HawUtils.invokeWithStatistics(new HawExecutor() {
+            @Override
+            public Object execute() throws Throwable {
+                test2();
+                return null;
+            }
+        });
+    }
+
+    private static void test2() {
+        String s = "[({})]";
+        boolean valid = new Solution2().isValid(s);
+        HawConsoles.jsout(valid);
+    }
+
+
+    /**
+     * 执行用时：62ms,在所有java提交中击败了6.33%的用户
+     * 内存消耗：34.4MB,在所有java提交中击败了84.36%的用户
+     */
+    private static class Solution2 {
+
+        /**
+         * 双重循环+双指针
+         */
+        public boolean isValid(String s) {
+            char[] chs = s.toCharArray();
+            int len = chs.length;
+            if ((len & 1) != 0) {
+                return false;
+            }
+            boolean[] flg = new boolean[len];
+            int lft = len;
+            boolean res = true;
+            while (lft > 0 && res) {
+                int ldx = -1;
+                char lst = 0;
+                boolean fnd = false;
+                for (int idx = 0; idx < len; idx++) {
+                    if (flg[idx]) {
+                        continue;
+                    }
+                    char ch = chs[idx];
+                    if (ldx != -1 && chk(lst, ch)) {
+                        flg[ldx] = true;
+                        flg[idx] = true;
+                        lft -= 2;
+                        fnd = true;
+                    }
+                    ldx = idx;
+                    lst = ch;
+                }
+                if (!fnd) {
+                    res = false;
+                }
+            }
+            return lft == 0;
+        }
+
+        private boolean chk(char pop, char tgt) {
+            if (pop == '(') {
+                return tgt == ')';
+            } else if (pop == '[') {
+                return tgt == ']';
+            } else if (pop == '{') {
+                return tgt == '}';
+            }
+            return false;
+        }
     }
 
     private static void test() {
@@ -39,10 +108,15 @@ public class Problem0020 {
 
         /**
          * 栈
+         * <p>
+         * 栈可以帮助我们递归地处理这种情况，即从外部到内部
          */
         public boolean isValid(String s) {
             char[] chs = s.toCharArray();
             int len = chs.length;
+            if ((len & 1) != 0) {
+                return false;
+            }
             Stack stack = new Stack(len);
             for (int idx = 0; idx < len; idx++) {
                 char val = chs[idx];
