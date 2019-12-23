@@ -13,7 +13,7 @@ import cn.tenbit.haw.core.util.HawConsoles;
  * @author bangquan.qian
  * @date 2019-11-14 19:16
  */
-public class Problem0018 {
+public class Problem0019 {
 
     public static void main(String[] args) {
         HawUtils.invokeWithStatistics(new HawExecutor() {
