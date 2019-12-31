@@ -13,13 +13,13 @@ public class Problem0000 {
         HawUtils.invokeWithStatistics(new HawExecutor() {
             @Override
             public Object execute() throws Throwable {
-                test();
+                test1();
                 return null;
             }
         });
     }
 
-    private static void test() {
+    private static void test1() {
 
     }
 
