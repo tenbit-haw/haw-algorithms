@@ -101,7 +101,7 @@ public class Problem0023 {
                     } else {
                         next = lst2;
                         lst2 = lst2.next;
-                    }
+                     }
                 } else if (bval1) {
                     next = lst1;
                     lst1 = lst1.next;
